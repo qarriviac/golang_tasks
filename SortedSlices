@@ -1,0 +1,36 @@
+package solution
+
+// BEGIN (write your solution here)
+
+  func UniqueUserIDs(userIDs []int64) []int64 {
+    if (len(userIDs) < 2) {
+      return userIDs
+    } else {
+      m := map[int]int64{}
+      for i:= 0; i < len(userIDs); i++ {
+        m[i] = userIDs[i]
+      }
+    
+    
+      for i := 0; i < len(m); i++ {
+        for j := (len(m) - 1); j > i; j-- {
+          if (m[i] == m[j]) {
+            delete(m, j)
+          }
+        }
+      }
+  
+      UuserIDs := make([]int64, 0, len(m))
+      
+      for i := 0; i <= len(m); i++ {
+          if (m[i] != 0) {
+            UuserIDs = append(UuserIDs, m[i])
+            //break
+          }
+        
+      } 
+      return UuserIDs
+    }
+  }
+
+// END
